@@ -79,6 +79,9 @@ chmod -R ug+w ${DOCROOT}/sites/default/
 chown -R mysql:${GRPID} /var/lib/mysql/
 chmod -R ug+w /var/lib/mysql/
 find -type d -exec chmod +xr {} \;
+
+# Change apache upload max filesize 2M to 50M
+sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 50M/g' /etc/php/7.2/apache2/php.ini
 (sleep 3; drush --root=${DOCROOT}/ cache-rebuild 2>/dev/null) &
 
 echo
