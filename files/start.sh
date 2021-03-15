@@ -3,7 +3,7 @@
 export BASEHTML="/var/www/html"
 export DOCROOT="/var/www/html/web"
 export GRPID=$(stat -c "%g" /var/lib/mysql/)
-export DRUSH="/.composer/vendor/drush/drush/drush"
+export DRUSH="/.config/composer/vendor/drush/drush/drush"
 export LOCAL_IP=$(hostname -I| awk '{print $1}')
 export HOSTIP=$(/sbin/ip route | awk '/default/ { print $3 }')
 echo "${HOSTIP} dockerhost" >> /etc/hosts
