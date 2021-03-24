@@ -3,7 +3,7 @@ services:
   drupal:
     stdin_open: true
     tty: true
-    image: "ricardoamaro/drupal8"
+    image: "celosop/drupal8"
     ports:
       - 80:80
     volumes:
