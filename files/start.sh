@@ -83,7 +83,8 @@ find -type d -exec chmod +xr {} \;
 # Change apache upload max filesize 2M to 50M
 sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 50M/g' /etc/php/7.2/apache2/php.ini
 sed -i 's/post_max_size = 8M/post_max_size = 50M/g' /etc/php/7.2/apache2/php.ini
-
+service apache2 reload
+# Create backup script for dump sql files
 echo "#!/bin/bash
 cd /var/www/html
 mysqldump -v -u drupal --password=`cat /var/www/html/data/mysql/drupal-db-pw.txt` --databases dru
