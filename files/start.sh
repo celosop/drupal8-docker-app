@@ -88,8 +88,10 @@ service apache2 reload
 echo "#!/bin/bash
 cd /var/www/html
 mysqldump -v -u drupal --password=`cat /var/www/html/data/mysql/drupal-db-pw.txt` --databases drupal --result-file=/var/www/html/mysql-backup`date +%Y%m%d`.sql
-tar -czf mysql-backup`date +%Y%m%d`.sql.tar.gz mysql-backup`date +%Y%m%d`.sql 
+tar -czf mysql-backup.sql.tar.gz mysql-backup`date +%Y%m%d`.sql 
 rm *.sql" > /var/lib/mysql/script.sh
+
+echo innodb_use_native_aio = 0 >> /etc/mysql/mysql.cnf
 
 (sleep 3; drush --root=${DOCROOT}/ cache-rebuild 2>/dev/null) &
 
